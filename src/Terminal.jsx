@@ -214,6 +214,7 @@ export default class Terminal extends Component {
   componentDidMount () {
     this.validateCommands()
     if (this.props.welcomeMessage) this.showWelcomeMessage()
+    this.props.setProcessCommand(this.processCommand)
     /* istanbul ignore next: Covered by interactivity tests */
     if (this.props.autoFocus) this.focusTerminal()
   }
@@ -265,6 +266,7 @@ export default class Terminal extends Component {
               style={styles.input}
               onKeyDown={this.handleInput}
               type='text'
+              value={props.value}
               autoComplete='off'
               disabled={this.props.disabled || (this.props.disableOnProcess && /* istanbul ignore next: Covered by interactivity tests */ this.state.processing)}
             />
